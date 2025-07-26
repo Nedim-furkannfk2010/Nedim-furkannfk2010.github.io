@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nedim Furkan Küçükabaz - Yazılım Geliştirmeci</title>
+</head>
+<body>
+    <header>
+        <h1>Nedim Furkan Küçükabaz</h1>
+        <p>Yazılım Geliştirici</p>
+    </header>
+    
+    <nav>
+        <a href="#" onclick="show('ana-sayfa')" id="nav-ana-sayfa">Ana Sayfa</a>
+        <a href="#" onclick="show('hakkimda')" id="nav-hakkimda">Hakkımda</a>
+        <a href="#" onclick="show('yetenekler')" id="nav-yetenekler">Yetenekler</a>
+        <a href="#" onclick="show('projeler')" id="nav-projeler">Projeler</a>
+        <a href="#" onclick="show('yarisma')" id="nav-yarisma">Yarışmalar</a>
+        <a href="#" onclick="show('iletisim')" id="nav-iletisim">İletişim</a>
+    </nav>
+
+    <main>
+        <section id="ana-sayfa">
+            <h2>Son Yazılarım</h2>
+            
+            <article class="blog-post">
+                <h3 class="post-title">Yazılıma Yeni Başlayanlar İçin Öneriler</h3>
+                <p class="post-date">25 Temmuz 2025</p>
+                <p class="post-content">
+                    Yazılım dünyasına adım atmak isteyenler için tecrübelerime dayanarak bazı önemli öneriler paylaşmak istiyorum. İlk olarak bir programlama dili seçin ve ona odaklanın...
+                </p>
+                <a href="#" class="read-more" onclick="showBlogDetail('blog1')">Devamını Oku →</a>
+            </article>
+            
+            <article class="blog-post">
+                <h3 class="post-title">Robot Yarışmalarında Başarı İçin İpuçları</h3>
+                <p class="post-date">20 Temmuz 2025</p>
+                <p class="post-content">
+                    Robot yarışmalarına katılmayı planlıyorsanız size deneyimlerimi paylaşmak istiyorum. Teknofest ve MEB yarışmalarında edindiğim tecrübeler...
+                </p>
+                <a href="#" class="read-more" onclick="showBlogDetail('blog2')">Devamını Oku →</a>
+            </article>
+        </section>
+
+        <!-- Blog Detay Sayfaları -->
+        <section id="blog1" class="blog-detail">
+            <a href="#" class="back-to-home" onclick="show('ana-sayfa')">← Ana Sayfaya Dön</a>
+            <h2>Yazılıma Yeni Başlayanlar İçin Öneriler</h2>
+            <p class="post-date">25 Temmuz 2025</p>
+            
+            <p>Yazılım dünyasına adım atmak isteyenler için tecrübelerime dayanarak bazı önemli öneriler paylaşmak istiyorum. Bu yolculukta size rehberlik edecek pratik ipuçları:</p>
+            
+            <h3>1. Bir Dil Seçin ve Odaklanın</h3>
+            <p>İlk olarak bir programlama dili seçin ve ona odaklanın. Ben Python ile başlamanızı öneriyorum çünkü sözdizimi basit ve öğrenmesi kolay. Birden fazla dil öğrenmeye çalışmak yerine, seçtiğiniz dili derinlemesine öğrenin.</p>
+            
+            <h3>2. Küçük Projelerle Başlayın</h3>
+            <p>Teorik bilgiyi pratiğe dökmek için küçük projeler yapın. Hesap makinesi, not defteri, basit oyunlar gibi projelerle başlayabilirsiniz. Her proje size yeni şeyler öğretecek.</p>
+            
+            <h3>3. GitHub Kullanmayı Öğrenin</h3>
+            <p>GitHub sadece kod saklama yeri değil, aynı zamanda öğrenme ve paylaşım platformu. Kodlarınızı GitHub'da saklayın ve diğer geliştiricilerin projelerine göz atın.</p>
+            
+            <h3>4. Sürekli Öğrenmeye Açık Olun</h3>
+            <p>Teknoloji hızla gelişiyor. YouTube, online kurslar ve dokümantasyonları takip edin. Ben de YouTube kanalımda deneyimlerimi paylaşıyorum.</p>
+            
+            <h3>5. Yarışmalara Katılın</h3>
+            <p>Robot yarışmaları, hackathon'lar ve programming contest'ler hem öğrenmenizi hızlandırır hem de networking imkanı sağlar. Teknofest gibi büyük etkinlikler harika fırsatlar sunuyor.</p>
+            
+            <p>Unutmayın, yazılım öğrenmek bir maraton, sprint değil. Sabırlı olun ve her gün biraz daha ilerleyin!</p>
+        </section>
+
+        <section id="blog2" class="blog-detail">
+            <a href="#" class="back-to-home" onclick="show('ana-sayfa')">← Ana Sayfaya Dön</a>
+            <h2>Robot Yarışmalarında Başarı İçin İpuçları</h2>
+            <p class="post-date">20 Temmuz 2025</p>
+            
+            <p>Robot yarışmalarına katılmayı planlıyorsanız size deneyimlerimi paylaşmak istiyorum. Teknofest ve MEB yarışmalarında edindiğim tecrübelerden yola çıkarak:</p>
+            
+            <h3>Donanım ve Yazılım Dengesi</h3>
+            <p>İyi bir robot hem donanım hem de yazılım açısından optimize edilmelidir. Çizgi izleyen robotlarda sensör kalibrasyonu kritik öneme sahip. Arduino ile C++ kullanırken PID kontrolörü mutlaka öğrenin.</p>
+            
+            <h3>Test, Test, Test!</h3>
+            <p>Robotunuzu farklı zemin türlerinde, farklı ışık koşullarında test edin. Yarışma günü karşılaşabileceğiniz beklenmedik durumlar için robotunuzu hazır bulundurun.</p>
+            
+            <h3>Takım Çalışması</h3>
+            <p>Robot yarışmaları takım sporudur. Herkesin güçlü olduğu alanlar var. Ben programlama kısmında yoğunlaşırken, takım arkadaşlarım mekanik tasarım ve elektronik devrelerde çalıştı.</p>
+            
+            <h3>Dokümantasyonu İhmal Etmeyin</h3>
+            <p>Yarışmalarda sadece robotun performansı değil, projenizin dokümantasyonu da değerlendiriliyor. Algoritmanızı, tasarım sürecinizi ve aldığınız kararları detaylı şekilde belgelendirin.</p>
+            
+            <h3>Son Tavsiyeleri</h3>
+            <p>Yarışma günü sakin kalmaya çalışın. Plan B'nizi hazır bulundurun. En önemlisi, kazanmak kadar öğrenmek ve eğlenmek de önemli. Robotek yarışmasında jüri özel ödülü almamızın sebebi özgün yaklaşımımızdı, mükemmel performans değil.</p>
+            
+            <p>Herkese başarılar! Sorularınız olursa sosyal medya hesaplarımdan ulaşabilirsiniz.</p>
+        </section>
+
+        <section id="hakkimda">
+            <h2>Hakkımda</h2>
+            <p>Merhaba! Ben Nedim Furkan Küçükabaz Kılıçarslan. Borsa İstanbul Mesleki ve Teknik Anadolu Lisesi Bilişim bölümünde öğrenim görmekteyim.</p>
+            <p>Teknoloji ve yazılım geliştirme konusunda tutkulu bir öğrenciyim. Teknofest, MEB Robot gibi prestijli yarışmalarda aktif olarak görev almaktayım ve bu deneyimlerle kendimi sürekli geliştiriyorum.</p>
+        </section>
+
+        <section id="yetenekler">
+            <h2>Yetenekler</h2>
+            <h3>Programlama Dilleri</h3>
+            <ul>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>HTML & CSS</li>
+                <li>C++</li>
+                <li>C#</li>
+            </ul>
+            
+            <h3>Teknolojiler & Araçlar</h3>
+            <ul>
+                <li>YouTube & GitHub</li>
+                <li>Arduino</li>
+                <li>Robotik Programlama</li>
+                <li>Web Geliştirme</li>
+                <li>Masaüstü Uygulama Geliştirme</li>
+            </ul>
+        </section>
+
+        <section id="projeler">
+            <h2>Projelerim</h2>
+            
+            <div class="proje">
+                <h3>Çizgi İzleyen Robot</h3>
+                <p><strong>Teknolojiler:</strong> C++, Arduino, Sensörler</p>
+                <p>Çeşitli robot yarışmalarında çizgi izleyen kategorisinde katıldım. Robotun sensörler yardımıyla çizgiyi algılaması ve optimum hızda takip etmesi için C++ ile algoritma geliştirdim. Bu projede PID kontrol sistemleri ve sensör kalibrasyonu konularında deneyim kazandım.</p>
+            </div>
+            
+            <div class="proje">
+                <h3>Teknofest Uçan Araba Simülasyonu</h3>
+                <p><strong>Teknolojiler:</strong> Python, Riders Platform</p>
+                <p>Teknofest uçan araba simülasyon yarışmasında aktif rol aldım. Riders platformu üzerinde Python diliyle çeşitli senaryolar geliştirdim ve verilen görevleri başarıyla yerine getiren algoritmalar oluşturdum. Bu deneyim sayesinde simülasyon ortamlarında programlama ve problem çözme becerilerimi geliştirdim.</p>
+            </div>
+            
+            <div class="proje">
+                <h3>Kişisel Web Sitesi</h3>
+                <p><strong>Teknolojiler:</strong> HTML, CSS, JavaScript</p>
+                <p>Kendimi tanıtmak ve projelerimi sergilemek amacıyla bu kişisel web sitesini geliştirdim. Modern web teknolojilerini kullanarak responsive tasarım ilkelerine uygun, kullanıcı dostu bir arayüz oluşturdum.</p>
+            </div>
+        </section>
+
+        <section id="yarisma">
+            <h2>Yarışmalar & Başarılar</h2>
+            
+            <div class="yarisma">
+                <h3>Teknofest 2024 - Uçan Araba Yarışması</h3>
+                <p><strong>Kategori:</strong> Simülasyon</p>
+                <p><strong>Rol:</strong> Yazılım Geliştirici</p>
+                <p>Riders platformunda Python ile simülasyon senaryoları geliştirdim ve takım olarak yarışmaya katıldık.</p>
+            </div>
+            
+            <div class="yarisma">
+                <h3>MEB Robot Yarışması</h3>
+                <p><strong>Kategori:</strong> Çizgi İzleyen Robot</p>
+                <p><strong>Rol:</strong> Programlama ve Algoritma Geliştirme</p>
+                <p><strong>Sonuç:</strong> Yarı Final</p>
+                <p>C++ kullanarak çizgi izleyen robot algoritmaları geliştirdim ve yarı finale kadar çıkmayı başardık.</p>
+            </div>
+            
+            <div class="yarisma">
+                <h3>Robotek Yarışması</h3>
+                <p><strong>Kategori:</strong> Tasarla-Geliştir</p>
+                <p><strong>Rol:</strong> Takım Üyesi & Programcı</p>
+                <p><strong>Sonuç:</strong> Jüri Özel Ödülü</p>
+                <p>Tasarla-Geliştir kategorisinde özgün algoritma yaklaşımımız ve teknik çözümlerimizle jüri özel ödülünü kazandık.</p>
+            </div>
+        </section>
+
+        <section id="iletisim">
+            <h2>İletişim</h2>
+            <p>Benimle iletişime geçmek için aşağıdaki kanalları kullanabilirsiniz:</p>
+            
+            <div class="iletisim-bilgi">
+                <p><strong>E-posta:</strong> nedimkucukabaz2010@gmail.com</p>
+                <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@NedimK%C3%BC%C3%A7%C3%BCkabaz" target="_blank">YouTube Kanalım</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/Nedim-furkannfk2010" target="_blank">GitHub Profilim</a></p>
+                <p><strong>Instagram:</strong> <a href="https://instagram.com/gsli_asl4n" target="_blank">@gsli_asl4n</a></p>
+            </div>
+            
+            <p>Projeler, işbirliği önerileri veya sorularınız için her zaman ulaşabilirsiniz!</p>
+        </section>
+    </main>
+
+    <script>
+        // Navigasyon aktif durumu
+        function setActiveNav(activeId) {
+            // Tüm nav linklerinden active class'ını kaldır
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Aktif olan linke active class'ı ekle
+            document.getElementById('nav-' + activeId).classList.add('active');
+        }
+
+        // Sayfa gösterme fonksiyonu
+        function show(id) {
+            // Tüm section'ları gizle
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.style.display = 'none');
+            
+            // İsteneni göster
+            document.getElementById(id).style.display = 'block';
+            
+            // Navigasyon aktif durumunu ayarla
+            setActiveNav(id);
+            
+            // Sayfanın üstüne kaydır
+            window.scrollTo(0, 0);
+        }
+
+        // Blog detay gösterme fonksiyonu
+        function showBlogDetail(blogId) {
+            // Tüm section'ları gizle
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.style.display = 'none');
+            
+            // Blog detayını göster
+            document.getElementById(blogId).style.display = 'block';
+            
+            // Navigasyon aktif durumunu kaldır
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Sayfanın üstüne kaydır
+            window.scrollTo(0, 0);
+        }
+
+        // Sayfa yüklendiğinde ana sayfayı göster
+        window.onload = function() {
+            show('ana-sayfa');
+        };
+    </script>
+</body>
+</html>

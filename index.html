@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Nedim Furkan Küçükabaz - Yazılım Geliştirmeci</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -18,6 +18,7 @@
         <a href="#" onclick="show('yetenekler')" id="nav-yetenekler">Yetenekler</a>
         <a href="#" onclick="show('projeler')" id="nav-projeler">Projeler</a>
         <a href="#" onclick="show('yarisma')" id="nav-yarisma">Yarışmalar</a>
+        <a href="#" onclick="show('sertifikalar')" id="nav-sertifikalar">Sertifikalar</a>
         <a href="#" onclick="show('iletisim')" id="nav-iletisim">İletişim</a>
     </nav>
 
@@ -143,17 +144,18 @@
                 <p><strong>Teknolojiler:</strong> HTML, CSS, JavaScript</p>
                 <p>Kendimi tanıtmak ve projelerimi sergilemek amacıyla bu kişisel web sitesini geliştirdim. Modern web teknolojilerini kullanarak responsive tasarım ilkelerine uygun, kullanıcı dostu bir arayüz oluşturdum.</p>
             </div>
-           <!-- ...existing code... -->
+
             <div class="proje">
                 <h3>Ekler Zamanı Web Sitesi</h3>
                 <p><strong>Teknolojiler:</strong> HTML, CSS, JavaScript</p>
                 <p>Kendi geliştirdiğim ticari amaçlı bir web sitesidir. Modern web teknolojileriyle hazırlanmış, kullanıcı dostu ve responsive bir tasarıma sahiptir.</p>
                 <a href="https://eklerzamani.github.io/" target="_blank">Ekler Zamanı</a>
             </div>
-             <div class="proje">
+
+            <div class="proje">
                 <h3>Hesap Makinesi Web Sitesi</h3>
                 <p><strong>Teknolojiler:</strong> HTML, CSS, JavaScript</p>
-                <p>Kendi geliştirmek amaçlı yazdığım bir web sitedir.Kullanıcıların kolayca hesap yapabilecekleri bir hesap makinesidir.</p>
+                <p>Kendi geliştirmek amaçlı yazdığım bir web sitedir. Kullanıcıların kolayca hesap yapabilecekleri bir hesap makinesidir.</p>
                 <a href="https://nedim-furkannfk2010.github.io/onlinehesapmakinesi/" target="_blank">Hesap Makinesi</a>
             </div>
         </section>
@@ -185,6 +187,22 @@
             </div>
         </section>
 
+        <!-- Sertifikalar -->
+        <section id="sertifikalar" style="display:none;">
+            <h2>Sertifikalar</h2>
+            <p>BTK Akademi sertifikalarımın PDF hallerini görüntüleyebilir veya indirebilirsiniz.</p>
+
+            <div id="cert-list" class="cert-list"></div>
+
+            <div id="cert-viewer" class="cert-viewer" style="display:none; margin-top:16px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                    <h3 id="viewer-title" style="margin:0;">Sertifika Önizleme</h3>
+                    <button onclick="closeViewer()" class="btn btn-close">Kapat</button>
+                </div>
+                <iframe id="viewer-frame" src="" width="100%" height="600" title="Sertifika Görüntüleyici" style="border:1px solid #ddd; border-radius:8px;"></iframe>
+            </div>
+        </section>
+
         <section id="iletisim">
             <h2>İletişim</h2>
             <p>Benimle iletişime geçmek için aşağıdaki kanalları kullanabilirsiniz:</p>
@@ -199,47 +217,102 @@
     </main>
 
     <script>
+        // Sertifikalar: PDF'ler index.html ile aynı klasörde olmalı
+        const certificates = [
+            { title: "BTK Akademi - A1 Seviye İngilizce Sertifika", file: "A1_Seviye_İngilizce_Sertifika.pdf", date: "" },
+            { title: "BTK Akademi - A2 Seviye İngilizce Sertifika", file: "A2_Seviye_İngilizce_Sertifika.pdf", date: "" },
+            { title: "BTK Akademi - Bilgi Teknolojilerine Giriş Sertifika", file: "Bilgi_Teknolojilerine_Giriş_Sertifika.pdf", date: "" },
+            { title: "BTK Akademi - Microsoft Word Temelleri Sertifika", file: "Microsoft_Word_Temelleri_Sertifika.pdf", date: "" }
+        ];
+
         // Navigasyon aktif durumu
         function setActiveNav(activeId) {
-            // Tüm nav linklerinden active class'ını kaldır
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Aktif olan linke active class'ı ekle
-            document.getElementById('nav-' + activeId).classList.add('active');
+            const el = document.getElementById('nav-' + activeId);
+            if (el) el.classList.add('active');
         }
 
-        // Sayfa gösterme fonksiyonu
+        // Sayfa gösterme fonksiyonu (Sertifikalar için render + viewer kapatma eklendi)
         function show(id) {
-            // Tüm section'ları gizle
             const sections = document.querySelectorAll('section');
             sections.forEach(section => section.style.display = 'none');
-            
-            // İsteneni göster
-            document.getElementById(id).style.display = 'block';
-            
-            // Navigasyon aktif durumunu ayarla
+
+            const target = document.getElementById(id);
+            if (target) target.style.display = 'block';
+
             setActiveNav(id);
-            
-            // Sayfanın üstüne kaydır
+
+            // Sertifikalar sayfasına gelince listeyi üret, diğer sayfalarda viewer'ı kapat
+            if (id === 'sertifikalar') {
+                renderCertificates();
+            } else {
+                closeViewer();
+            }
+
             window.scrollTo(0, 0);
         }
 
         // Blog detay gösterme fonksiyonu
         function showBlogDetail(blogId) {
-            // Tüm section'ları gizle
             const sections = document.querySelectorAll('section');
             sections.forEach(section => section.style.display = 'none');
-            
-            // Blog detayını göster
-            document.getElementById(blogId).style.display = 'block';
-            
-            // Navigasyon aktif durumunu kaldır
+
+            const target = document.getElementById(blogId);
+            if (target) target.style.display = 'block';
+
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Sayfanın üstüne kaydır
+
             window.scrollTo(0, 0);
+        }
+
+        // Sertifikaları listele
+        function renderCertificates() {
+            const list = document.getElementById('cert-list');
+            if (!list) return;
+
+            if (!certificates.length) {
+                list.innerHTML = '<p>Henüz tanımlı sertifika yok. Lütfen certificates dizisine PDF dosyalarınızı ekleyin.</p>';
+                return;
+            }
+
+            list.innerHTML = certificates.map((c, i) => `
+                <div class="cert-card">
+                    <div class="cert-title">${escapeHtml(c.title || 'Sertifika')}</div>
+                    ${c.date ? `<div class="cert-meta">Tarih: ${escapeHtml(c.date)}</div>` : ''}
+                    <div class="btn-row">
+                        <button class="btn btn-view" onclick="viewCert(${i})">Görüntüle</button>
+                        <a class="btn btn-download" href="${encodeURI(c.file)}" download target="_blank" rel="noopener">İndir (.pdf)</a>
+                        <a class="btn btn-open" href="${encodeURI(c.file)}" target="_blank" rel="noopener">Yeni Sekmede Aç</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // PDF görüntüle
+        function viewCert(index) {
+            const c = certificates[index];
+            if (!c) return;
+            const frame = document.getElementById('viewer-frame');
+            const viewer = document.getElementById('cert-viewer');
+            const title = document.getElementById('viewer-title');
+            title.textContent = c.title || 'Sertifika Önizleme';
+            frame.src = encodeURI(c.file);
+            viewer.style.display = 'block';
+            document.getElementById('sertifikalar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeViewer() {
+            const frame = document.getElementById('viewer-frame');
+            const viewer = document.getElementById('cert-viewer');
+            if (frame) frame.src = '';
+            if (viewer) viewer.style.display = 'none';
+        }
+
+        // Küçük yardımcı (XSS önlemi)
+        function escapeHtml(str='') {
+            return str.toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
         }
 
         // Sayfa yüklendiğinde ana sayfayı göster

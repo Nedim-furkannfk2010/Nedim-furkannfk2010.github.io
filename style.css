@@ -415,3 +415,77 @@ li:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #764ba2, #667eea);
 }
+/* Sertifikalar */
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.cert-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.cert-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cert-meta {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Basit buton stilleri (genel) */
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  background: #f3f4f6;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  text-decoration: none; /* a.btn için */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn:hover { background: #eef0f5; }
+
+.btn-view {
+  background: #6c63ff;
+  color: #fff;
+  border-color: #6c63ff;
+}
+
+.btn-view:hover { filter: brightness(1.05); }
+
+.btn-close {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+.btn-open {}
+.btn-download {}
+
+/* İsteğe bağlı: nav aktif link vurgusu */
+nav a.active {
+  color: #6c63ff;
+  font-weight: 700;
+  text-decoration: underline;
+}
